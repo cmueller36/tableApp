@@ -74,8 +74,8 @@
 
 <script type="text/javascript">
 
-    $("#submit").on("click", function() {
-
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
         var newTable = {
             name: $("#nameInput").val().trim();
             phone: $("#phoneInput").val().trim();
