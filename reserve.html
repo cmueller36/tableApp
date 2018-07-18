@@ -13,33 +13,23 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4"><i class="fas fa-wine-glass-alt"></i>  Hot Restaurant</h1>
-          <h3 class="lead">Current Reservations and Waiting List</h3>
-          <button type="button" class="btn btn-lg btn-outline-dark"><i class="fas fa-credit-card"></i>  Make Reservation</button>
-          <button type="button" class="btn btn-lg btn-outline-dark"><i class="fas fa-home"></i></button>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">Current Reservations</div>
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">Waiting List</div>
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        </div>
-      </div>
-
 </body>
 
 <script type="text/javascript">
+    $("#submit").on("click", function() {
 
+        var newTable = {
+            name: $("#nameInput").val().trim();
+            phone: $("#phoneInput").val().trim();
+            email: $("#emailInput").val().trim();
+            id: $("uId").val().trim();
+        };
+
+        $.post("/api/tables", newTable).then(function(data) {
+            console.log("reserve.html", data);
+            alert("Adding table...");
+        });
+
+    });
 </script>
-
 </html>
