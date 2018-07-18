@@ -8,6 +8,9 @@ var path = require("path");
 var app = express();
 var PORT = 8080;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 var tables = [{
   name: 'pikachu',
   phone: '555-555-5555',
@@ -32,13 +35,13 @@ app.get("/api/waitlist", function (req, res) {
 
 app.post("/api/tables", function (req, res) {
   var newTable = req.body;
-  newTable.routeName = "table" + newTable.id
+  console.log(req.body);
   if (tables.length < 5) {
     tables.push(newTable);
-    response.send("true");
+    res.send("true");
   } else {
     waitlist.push(newTable);
-    response.send("false");
+    res.send("false");
   }
 });
 
